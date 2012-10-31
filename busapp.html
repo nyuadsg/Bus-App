@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Bus App</title>
+</head>
+
+
+<script type="text/javascript">
+
+var counts=[
+new Date(2012, 10, 31, 18, 50, 0, 0),
+new Date(2012, 10, 31, 18, 40, 0, 0)
+];
+
+var count=counts.pop();
+
+var counter=setInterval(timer, 1000); 
+
+function timer(){
+	current= new Date();
+	disp=new Date(count-current);
+	disp.setHours(disp.getHours()-4);
+	
+	while (disp.getHours()+disp.getMinutes()+disp.getSeconds() == 0 || disp.getHours()>6){
+		if (counts.length==0){
+			clearInterval(timer);
+			return;
+		}
+		count=counts.pop()
+	}
+	h= disp.getHours() > 10 ? disp.getHours() : "0"+disp.getHours(); 
+	m= disp.getMinutes() > 10 ? disp.getMinutes() : "0"+disp.getMinutes(); 
+	s= disp.getSeconds() > 10 ? disp.getSeconds() : "0"+disp.getSeconds(); 
+
+	document.getElementById("holder").innerHTML=h+":"+m+":"+s;
+}
+
+
+
+</script>
+<body>
+
+<section id="holder">
+</section>
+
+
+</body>
+</html>
