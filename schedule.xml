@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<schedule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<stops>
+		<stop name="Sama" description="Sama Tower" latitude="?" longitude="?" />
+		<stop name="DTC" description="Downtown Campus" latitude="?" longitude="?" />
+		<stop name="Cristal" description="Cristal Hotel" latitude="?" longitude="?" />
+		<stop name="CSE" description="Center for Science and Engineering" latitude="?" longitude="?" />
+		<stop name="Ecipse" description="Eclipse Hotel" latitude="?" longitude="?" />
+	</stops>
+	<routeset days="UMTWR">
+		<route>
+			<stop name="Sama">
+				<arrive>0705</arrive>
+				<depart>0707</depart>
+			</stop>
+			<stop name="DTC">
+				<arrive>0717</arrive>
+			</stop>				
+		</route>
+		<route>
+			<stop name="DTC">
+				<depart>0720</depart>
+			</stop>
+			<stop name="Sama">
+				<arrive>0725</arrive>
+				<depart>0727</depart>
+			</stop>	
+			<stop name="DTC">
+				<arrive>0737</arrive>
+			</stop>		
+		</route>
+	</routes>
+	<routeset days="UMTWR">
+		<route>
+			<stop name="DTC">
+				<depart>0735</depart>
+			</stop>
+			<stop name="Eclipse">
+				<arrive>0742</arrive>
+				<depart>0744</depart>
+			</stop>
+			<stop name="Sama">
+				<arrive>0752</arrive>
+				<depart>0754</depart>
+			</stop>
+			<stop name="Cristal">
+				<arrive>0757</arrive>
+				<depart>0759</depart>
+			</stop>
+			<stop name="CSE">
+				<arrive>0840</arrive>
+			</stop>
+		</route>
+	</routes>
+	<routeset days="FS">
+		<route>
+			<stop name="Sama">
+				<arrive>0705</arrive>
+				<depart>0707</depart>
+			</stop>
+			<stop name="DTC">
+				<arrive>0717</arrive>
+			</stop>				
+		</route>
+	</routes>
+</schedule>
