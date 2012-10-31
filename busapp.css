@@ -1,0 +1,23 @@
+
+body{
+	background-image:url('NYUAD_4color_RGB_1.png');
+	font-family: Helvetica;
+	text-align:center;
+}
+
+
+article, aside, footer, header, section { 
+	border: solid 1px black;
+	border-radius: 10px;
+	background:white;
+	margin-bottom:20px;
+	}
+
+div#main{
+	width: 50%;
+	margin-left:25%;
+}
+
+section.title{
+	margin-top:10%;
+}

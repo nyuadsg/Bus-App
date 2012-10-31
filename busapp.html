@@ -3,14 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <title>Bus App</title>
+<link rel="stylesheet" type="text/css" href="busapp.css" />
+
 </head>
 
 
 <script type="text/javascript">
 
+var locations=[];
+
+
 var counts=[
-new Date(2012, 10, 31, 18, 50, 0, 0),
-new Date(2012, 10, 31, 18, 40, 0, 0)
+new Date(2012, 10, 31, 19, 50, 0, 0),
+new Date(2012, 10, 31, 19, 40, 0, 0)
 ];
 
 var count=counts.pop();
@@ -25,13 +30,14 @@ function timer(){
 	while (disp.getHours()+disp.getMinutes()+disp.getSeconds() == 0 || disp.getHours()>6){
 		if (counts.length==0){
 			clearInterval(timer);
+			document.getElementById("holder").innerHTML="No More Buses For Today";
 			return;
 		}
 		count=counts.pop()
 	}
-	h= disp.getHours() > 10 ? disp.getHours() : "0"+disp.getHours(); 
-	m= disp.getMinutes() > 10 ? disp.getMinutes() : "0"+disp.getMinutes(); 
-	s= disp.getSeconds() > 10 ? disp.getSeconds() : "0"+disp.getSeconds(); 
+	h= disp.getHours() > 9 ? disp.getHours() : "0"+disp.getHours(); 
+	m= disp.getMinutes() > 9 ? disp.getMinutes() : "0"+disp.getMinutes(); 
+	s= disp.getSeconds() > 9 ? disp.getSeconds() : "0"+disp.getSeconds(); 
 
 	document.getElementById("holder").innerHTML=h+":"+m+":"+s;
 }
@@ -41,9 +47,16 @@ function timer(){
 </script>
 <body>
 
-<section id="holder">
+<div id="main">
+<section class="title">
+<h1>NYU Abu Dhabi Bus Countdown</h1>
 </section>
 
+<section>
+<h1 id="holder">
+</h1>
+</section>
+</div>
 
 </body>
 </html>
