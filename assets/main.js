@@ -1,9 +1,13 @@
 // Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
-
-	// Bus Model
-	// ----------
-
+	
+	// pretty names for stops
+	names = {
+		'sama': 'Sama',
+		'dtc': 'DTC',
+		'cse': 'CSE'
+	};
+	
 	// Our basic **Bus** model has stops
 	var Bus = Backbone.Model.extend({
 
@@ -22,6 +26,16 @@ $(function(){
 				]
 			};
 		},
+		
+		// Return the pretty name for a stop
+		prettyName: function( id ) {
+			return names[ id ];
+		},
+		
+		// Return the pretty display for a time
+		prettyTime: function( time ) {
+			return time;
+		}
 		
 	});
 
@@ -143,7 +157,10 @@ $(function(){
 		// Instead of generating a new element, bind to the existing skeleton of
 		// the App already present in the HTML.
 		el: $("#bus-app"),
-
+		
+		// Our template for the selection of stops
+    stopTemplate: _.template($('#stop-template').html()),
+		
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
 			// "keypress #new-todo":  "createOnEnter",
@@ -163,8 +180,12 @@ $(function(){
 			this.listenTo(Schedule, 'reset', this.addAll);
 			this.listenTo(Schedule, 'all', this.render);
 			// 
-			// this.footer = this.$('footer');
-			// this.main = $('#main');
+			this.from = this.$('#from');
+			
+			this.from.html('');
+			_.each( names, function( pretty, key ) {
+				this.from.append( this.stopTemplate( { name: pretty, key: key } ) );
+			}, this );
 			
 			this.filter();
 		},
@@ -172,7 +193,9 @@ $(function(){
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function() {
-			// this.filter();
+			// this.$el.html(this.template(this.model.toJSON()));
+						
+			return this;
 		},
 
 		// Add a single todo item to the list by creating a view for it, and
@@ -189,7 +212,7 @@ $(function(){
 
 		// Only show relevent buses
 		filter: function() {			
-			Schedule.reset( Buses.from( 'sama', 2100 ) );
+			Schedule.reset( Buses.from( 'sama', 1500 ) );
 		  return false;
 		},
 		// 

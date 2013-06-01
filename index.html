@@ -12,6 +12,8 @@
 
 		<header>
 			<h1>Bus Application</h1>
+			<select name="from" id="from">
+			</select>
 		</header>
 
 		<section id="main">
@@ -32,10 +34,16 @@
 
 	<script type="text/template" id="bus-template">
 		<ul class="stops">
+			
 			<% _.each(stops, function(stop) { %>
-				<li><strong><%= stop.name %></strong><span class="badge"><%= stop.time %></span></li>
-			<% }); %>
+				<li><strong><%= this.prettyName( stop.name ) %></strong><span class="badge"><%= this.prettyTime( stop.time ) %></span></li>
+			<% }, this.model); %>
 		</ul>
 	</script>
+	
+	<script type="text/template" id="stop-template">
+		<option value="<%= key %>"><%= name %></option>
+	</script>
+
 </body>
 </html>
